@@ -1,17 +1,18 @@
-import "./App.css";
-import menu from "./components/data";
+import "./app.css";
+import menu from "../data";
 import { useState } from "react";
+import React from 'react';
 
 const App = () => {
-	const [selectedId, setSelectedId] = useState([]);
+	const [selectedId, setSelectedId] = useState<any[]>([])
 
-	const handleClick = (id, idx) => {
-		var updatedId = [...selectedId];
+	const handleClick = (id: string, idx: number) => {
+		var updatedId: string[] = [...selectedId];
 		updatedId[idx] = id;
 		setSelectedId(updatedId);
 	};
 
-	const toggleDisable = (id, idx) => {
+	const toggleDisable = (id: string, idx: number) => {
 		if (!selectedId[idx - 1]) {
 			return true;
 		}
@@ -52,7 +53,7 @@ const App = () => {
 										<input
 											type="radio"
 											value={d.value}
-											name={idx + 1}
+											name={(idx + 1).toString()}
 											disabled={toggleDisable(d.id, idx + 1)}
 											onChange={() => handleClick(d.id, idx + 1)}
 										/>{" "}
